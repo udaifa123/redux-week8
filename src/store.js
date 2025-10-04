@@ -86,9 +86,9 @@ const initialState={
 
 function userReducer(state=initialState,action){
   switch(action.type){
-    case "FETCH_USERs_REQUEST":
+    case "FETCH_USERS_REQUEST":
       return{...state,loading:true,error:null};
-    case "FETCH_USERs_SUCCESS":
+    case "FETCH_USERS_SUCCESS":
       return{...state,loading:false,users:action.payload};
     case "FETCH_USERS_FAILURE":
       return{...state,loading:false,error:action.payload};
@@ -100,3 +100,28 @@ export const store=createStore(userReducer,applyMiddleware(thunk));
 
 
 
+//-------------------updated reducers--------------------------
+// import {createStore,applyMiddleware}from "redux";
+// import { thunk } from "redux-thunk";
+
+// const initialState={
+//     data:null,
+//     loading:false,
+//     error:null,
+    
+// };
+
+// function simpleReducer(state=initialState,action){
+//   switch(action.type){
+//     case "API_REQUEST":
+//       return{...state,loading:true,error:null};
+//     case "API_SUCCESS":
+//       return{...state,loading:false,data:action.payload};
+//     case "API_FAILURE":
+//       return{...state,loading:false,error:action.payload};
+//     default:
+//       return state;
+//   }
+// }
+
+// export default store=createStore(reducer,applyMiddleware(thunk));

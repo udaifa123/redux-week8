@@ -32,28 +32,23 @@
 //==-------------------------------API call with redux--------------------------------
 import React,{useEffect} from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { fetchUser } from "./actions";
+import { fetchData } from "./actions";
 
 export default function User(){
     const dispatch=useDispatch();
 
-    const{user,loading,error}=useSelector((state)=>state);
+    const{data,loading,error}=useSelector((state)=>state);
 
     useEffect(()=>{
-        dispatch(fetchUser()); 
+        dispatch(fetchData()); 
     },[dispatch]);
 
     if(loading)return<h2>Loading...</h2>
     if(error)return<h2>Error:{error}</h2>
 
     return(
-        <div style={{textAlign:"center",marginTop:"20px"}}>
-            <h2>User List</h2>
-            <ul>
-               {user.map((user)=>(
-                <li key={user.id}>{user.name} ({user.email})</li>
-               ))}
-            </ul>
+        <div style={{textAlign:"center",marginTop:"50px"}}>
+            {data ? <h2>{data.name} ({data.email})</h2> :<h2>No data</h2>}
 
         </div>
     )
